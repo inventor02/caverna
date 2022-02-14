@@ -10,6 +10,8 @@ cmake_minimum_required(VERSION 3.1)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
+cmake_policy(SET CMP0072 NEW)
+
 # Project definitions
 project(
   Caverna
