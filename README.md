@@ -9,4 +9,6 @@ Documentation for the project will be available on Confluence.
 
 Issue tracking will be available via Jira.
 
-### Contributors 
+### Contributors
+
+This project is currently being developed by [George](https://github.com/inventor02)...
