@@ -2,6 +2,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <cglm/cglm.h>
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 int main() {
@@ -30,6 +32,11 @@ int main() {
 	glViewport(0, 0, 800, 600);
 
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+	// Simple code to test cglm functionality
+	mat4 m = GLM_MAT4_IDENTITY_INIT;
+
+	glm_mat4_mul(m, m, m);
 
 	while(!glfwWindowShouldClose(window)) {
 		glfwSwapBuffers(window);
