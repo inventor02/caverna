@@ -3,6 +3,7 @@
 # @version 1.1.0                                                               #
 # @author George Peppard                                                       #
 # @author Toby Godfrey                                                         #
+# @author Adam Caine                                                           #
 ################################################################################
 
 # CMake definitions
@@ -27,12 +28,11 @@ file(GLOB_RECURSE CAVERNA_SOURCE_FILES
 )
 
 # Packages
-# TODO add CGLM when required
 find_package(OpenGL REQUIRED)
 find_package(GLFW3 REQUIRED)
 add_library(GLAD "external/glad/src/glad.c")
 
-set(CAVERNA_LIBS ${CMAKE_DL_LIBS} ${GLFW3_STATIC_LIBRARIES} ${OPENGL_LIBRARIES} GLAD glfw)
+set(CAVERNA_LIBS ${CMAKE_DL_LIBS} ${GLFW3_STATIC_LIBRARIES} ${OPENGL_LIBRARIES} GLAD glfw cglm)
 
 # Include DIRs
 include_directories(
@@ -44,6 +44,9 @@ include_directories(
 # Executable definitions
 add_executable(${CAVERNA_EXEC_NAME} ${CAVERNA_SOURCE_FILES})
 target_link_libraries(${CAVERNA_EXEC_NAME} ${CAVERNA_LIBS})
+
+# Inlcude cglm
+add_subdirectory(external/cglm/)
 
 # Compiler and linker options
 set(CAVERNA_FLAGS "-lGL -lGLU -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -g -Wall -Werror -pg")
