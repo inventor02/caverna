@@ -6,18 +6,13 @@
 #include <cglm/cglm.h>
 
 #include "log/log.h"
+#include "log/proginfo.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 int main() {
-	printf("Hello, World!\n");
   logging_init(5);
-  clog(0, "I am a fatal log message");
-  clog(1, "I am a error log message");
-  clog(2, "I am a warning log message");
-  clog(3, "I am a info log message");
-  clog(4, "I am a debug log message");
-  clog(5, "I am a trace log message");
+  preamble();
 
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);

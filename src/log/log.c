@@ -59,7 +59,7 @@ void logging_log_message_format(const char *file, const char *func, int line, ui
   }
 
   char *color = get_log_color(log_level);
-  char *message = calloc(128 + strlen(format), sizeof(char));
+  char *message = calloc(512 + strlen(format), sizeof(char));
 
   sprintf(message, "%s[%-7s] [%-12s %-12s L%-3d] ", get_log_color(log_level), get_log_level_name(log_level), get_short_file_name(file), func, line);
 
