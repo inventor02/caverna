@@ -28,7 +28,7 @@ enum tile_type {
  */
 struct room {
   //enum tile_type tile_layout[CAVERNA_LEVEL_X_DIMENSION][CAVERNA_LEVEL_Y_DIMENSION][CAVERNA_LEVEL_Z_DIMENSION];
-  enum tile_type tile_layout[3][3][3];
+  enum tile_type tile_layout[CAVERNA_LEVEL_X_DIMENSION][CAVERNA_LEVEL_Y_DIMENSION][CAVERNA_LEVEL_Z_DIMENSION];
   uint8_t level;
 };
 
