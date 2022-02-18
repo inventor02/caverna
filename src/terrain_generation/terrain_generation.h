@@ -12,9 +12,9 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define CAVERNA_LEVEL_X_DIMENSION 255
-#define CAVERNA_LEVEL_Y_DIMENSION 255
-#define CAVERNA_LEVEL_Z_DIMENSION 255
+#define CAVERNA_LEVEL_X_DIMENSION 16
+#define CAVERNA_LEVEL_Y_DIMENSION 16
+#define CAVERNA_LEVEL_Z_DIMENSION 16
 
 // This can be expanded to allow for the creation of different tiles.
 enum tile_type {
@@ -27,14 +27,17 @@ enum tile_type {
  * @brief A struct to hold all the data regarding the rogue-like levels.
  */
 struct room {
-  enum tile_type* tile_layout;
+  //enum tile_type tile_layout[CAVERNA_LEVEL_X_DIMENSION][CAVERNA_LEVEL_Y_DIMENSION][CAVERNA_LEVEL_Z_DIMENSION];
+  enum tile_type tile_layout[3][3][3];
   uint8_t level;
 };
 
 /**
- * @brief Initialises the terrain generation.
+ * @brief Initialises the room.
+ * 
+ * @param level is the level in the cave that the current room is 
  */
-struct room room_init();
+struct room room_init(uint8_t level);
 
 /**
  * @brief The main method to generate the level and write it to the room struct.
