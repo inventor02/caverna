@@ -7,7 +7,7 @@
 
 struct room room_init(uint8_t level) {
   struct room room = {
-    .tile_layout[CAVERNA_LEVEL_X_DIMENSION][CAVERNA_LEVEL_Y_DIMENSION][CAVERNA_LEVEL_Z_DIMENSION] = {{{0}}},
+    .tile_layout = {{{WALL}}},
     .level = level,
   };
   clog(CAVERNA_LOG_LEVEL_DEBUG, "room struct successfully created");
