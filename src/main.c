@@ -15,11 +15,12 @@ int main() {
   logging_init(5);
   preamble();
 
-	run();
+	//run();
 
   struct room thisRoom = room_init(1);
   generate_level(&thisRoom);
 
+  /*
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -58,7 +59,7 @@ int main() {
 	}
 
 	glfwTerminate();
-
+*/
 	return 0;
 }
 
