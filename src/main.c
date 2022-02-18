@@ -15,12 +15,13 @@ int main() {
   logging_init(5);
   preamble();
 
-	run();
 
   struct room thisRoom = room_init(1);
   generate_level(&thisRoom);
 
-	return 0;
+	run();
+
+  return 0;
 }
 
 
