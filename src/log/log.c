@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-uint8_t current_log_level;
+uint8_t current_log_level = CAVERNA_LOG_LEVEL_INFO;
 
 char *get_log_color(uint8_t log_level) {
   switch (log_level) {
