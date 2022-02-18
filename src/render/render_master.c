@@ -1,3 +1,5 @@
+#include "render_master.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <glad/glad.h>
@@ -10,10 +12,7 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
-int main() {
-  logging_init(5);
-  preamble();
-
+int run() {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
