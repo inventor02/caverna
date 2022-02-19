@@ -18,7 +18,10 @@ int main() {
 	//run();
   struct room room = room_init(1);
   generate_level(&room);
-
+  prng_set_seed();
+  for(uint8_t i = 0; i < 64; i++) {
+    double rand = generate_random_double(0, 10);
+  }
   /*
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);

@@ -27,15 +27,14 @@ enum tile_type {
  * @brief A struct to hold all the data regarding the rogue-like levels.
  */
 struct room {
-  //enum tile_type tile_layout[CAVERNA_LEVEL_X_DIMENSION][CAVERNA_LEVEL_Y_DIMENSION][CAVERNA_LEVEL_Z_DIMENSION];
   enum tile_type tile_layout[CAVERNA_LEVEL_X_DIMENSION][CAVERNA_LEVEL_Y_DIMENSION][CAVERNA_LEVEL_Z_DIMENSION];
   uint8_t level;
 };
 
 /**
  * @brief Initialises the room.
- * 
- * @param level is the level in the cave that the current room is 
+ *
+ * @param level is the level in the cave that the current room is
  */
 struct room room_init(uint8_t level);
 
@@ -43,5 +42,27 @@ struct room room_init(uint8_t level);
  * @brief The main method to generate the level and write it to the room struct.
  */
 void generate_level(struct room *room);
+
+/**
+ * @brief The seed for the PRNG. This should only be allocated once.
+ */
+extern uint64_t prng_seed;
+
+
+/**
+ * @brief A method to set the seed for the PRNG. This is to ensure the
+ * seed is set only once.
+ */
+void prng_set_seed();
+
+/**
+ * @brief A method to generate a random number between a given range.
+ *
+ * @param min is the lower bound of the range
+ * @param max is the upper bound of the range
+ *
+ * @return a random double between the given bounds
+ */
+double generate_random_double(double min, double max);
 
 #endif // TERRAIN_GENERATION_H
