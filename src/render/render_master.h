@@ -13,4 +13,6 @@
 int run();
 
 
+extern unsigned int cav_vao, cav_vbo, cav_ebo, cav_vertex, cav_frag, cav_shader_program;
+
 #endif
