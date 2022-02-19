@@ -9,25 +9,36 @@
 #include "log/log.h"
 #include "log/proginfo.h"
 
+unsigned int cav_vao, cav_vbo, cav_frag, cav_vertex, cav_shader_program;
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 void processEvent(GLFWwindow *window);
 
-void vboBufferDataExample(float *vertices, const char *vertex_src, const char *frag_src);
+void vboBufferDataExample(float *vertices, int size_of_arr, const char *vertex_src, const char *frag_src);
 
 void render();
+
+void printSize(float *vertices) {
+	clogf(CAVERNA_LOG_LEVEL_TRACE, "Number of elements the array can hold: %i", sizeof(vertices)/sizeof(float));
+}
 
 int run() {
 
 	//////////////// Garbage example data delete later ////////////////////////
-	float vertices[] = {
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		0.0f, 0.5f, 0.0f
-	};
+	float vertices[] = {-0.5f, -0.5f, 0.0f, 0.5f, -0.5f, 0.0f, 0.0f, 0.5f, 0.0f};
 
-	const char *vertexShaderSource = "#version 330 core\nlayout (location = 0) in vec3 aPos;\nvoid main()\n{\n  gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n}\0";
-	const char *fragmentShaderSource = "#version 330 core\nout vec4 FragColor;\nvoid main()\n{\n  FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n}\0";
+	for (int i = 0; i < 9; i++) {
+		clogf(CAVERNA_LOG_LEVEL_TRACE, "Element %i : Value %f\n", i, vertices[i]);
+	}
+
+	const char *vertexShaderSource = "#version 330 core\nlayout (location = 0) in vec3 aPos;\nvoid main()\n{\n   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n}\0";
+	const char *fragmentShaderSource = "#version 330 core\nout vec4 FragColor;\nvoid main()\n{\n   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n}\0";
+
+
+	clogf(CAVERNA_LOG_LEVEL_TRACE, "Number of elements the array can hold: %i", sizeof(vertices)/sizeof(float));
+
+	printSize(vertices);
 
 
 
@@ -64,21 +75,25 @@ int run() {
 
 	glm_mat4_mul(m, m, m);
 
-	vboBufferDataExample(vertices, vertexShaderSource, fragmentShaderSource);
+	vboBufferDataExample(vertices, 9, vertexShaderSource, fragmentShaderSource);
 
 	while(!glfwWindowShouldClose(window)) {
 
 		processEvent(window);
 
-		glfwSwapBuffers(window);
-		glfwPollEvents();
 
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		render();
+
+
+		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
+
+	// NEED TO DEALLOCATE VUFFERS AND RESOURCES HERE
 
 	glfwTerminate();
 
@@ -97,17 +112,25 @@ void processEvent(GLFWwindow *window) {
 	}
 }
 
-void vboBufferDataExample(float *vertices, const char *vertex_src, const char *frag_src) {
+void vboBufferDataExample(float *vertices, int size_of_arr,const char *vertex_src, const char *frag_src) {
+
+	clog(CAVERNA_LOG_LEVEL_TRACE, vertex_src);
+	clog(CAVERNA_LOG_LEVEL_TRACE, frag_src);
+
 
 	glGenVertexArrays(1, &cav_vao);
+	glGenBuffers(1, &cav_vbo);
+
+	glBindVertexArray(cav_vao);
 
 	// Generate Vertex Buffer Object
-	glGenBuffers(1, &cav_vbo);
 
 	glBindBuffer(GL_ARRAY_BUFFER, cav_vbo);
 
+	clogf(CAVERNA_LOG_LEVEL_TRACE, "size of vertices: %i\n", sizeof(vertices)/sizeof(float));
+
 	// Send the data away
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * size_of_arr, vertices, GL_STATIC_DRAW);
 
 	// Set vertex attribute pointers
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
@@ -120,14 +143,38 @@ void vboBufferDataExample(float *vertices, const char *vertex_src, const char *f
 	// Attach source code to shader
 	glShaderSource(cav_vertex, 1, &vertex_src, NULL);
 	glShaderSource(cav_frag, 1, &frag_src, NULL);
+
+	char info_log[512];
+	int success;
 	glCompileShader(cav_vertex);
+
+	// Check for compile errors
+	glGetShaderiv(cav_vertex, GL_COMPILE_STATUS, &success);
+	if (!success) {
+		glGetShaderInfoLog(cav_vertex, 512, NULL, info_log);
+		clog(CAVERNA_LOG_LEVEL_ERROR, info_log);
+	}
+
 	glCompileShader(cav_frag);
+
+	glGetShaderiv(cav_frag, GL_COMPILE_STATUS, &success);
+	if (!success) {
+		glGetShaderInfoLog(cav_frag, 512, NULL, info_log);
+		clog(CAVERNA_LOG_LEVEL_ERROR, info_log);
+	}
 
 	// Shader Program Stuff
 	cav_shader_program = glCreateProgram();
 	glAttachShader(cav_shader_program, cav_vertex);
 	glAttachShader(cav_shader_program, cav_frag);
 	glLinkProgram(cav_shader_program);
+
+	// Check for linking errors
+	glGetProgramiv(cav_shader_program, GL_LINK_STATUS, &success);
+	if (!success) {
+		glGetProgramInfoLog(cav_shader_program, 512, NULL, info_log);
+		clog(CAVERNA_LOG_LEVEL_ERROR, info_log);
+	}
 
 	// Use the shader
 	glUseProgram(cav_shader_program);
