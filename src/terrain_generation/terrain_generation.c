@@ -1,5 +1,6 @@
 #include "terrain_generation.h"
 
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,5 +16,9 @@ struct room room_init(uint8_t level) {
 }
 
 void generate_level(struct room *room) {
-  // TODO: GENERATE A LEVEL
+  uint64_t prng_seed = time(0);
+  clogf(CAVERNA_LOG_LEVEL_TRACE, "PRNG Seed: %d", prng_seed);
+  srand(prng_seed);
+  uint64_t random_number = rand();
+  clogf(CAVERNA_LOG_LEVEL_TRACE, "Random number: %d", random_number);
 }

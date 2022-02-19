@@ -16,9 +16,10 @@ int main() {
   preamble();
 
 	//run();
-
   struct room thisRoom = room_init(1);
-  generate_level(&thisRoom);
+  for(uint8_t i = 0; i < 32; i++){
+    generate_level(&thisRoom);
+  }
 
   /*
 	glfwInit();
