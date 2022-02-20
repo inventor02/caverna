@@ -1,13 +1,13 @@
 #include "render_master.h"
 
-#include "log/log.h"
-#include "log/proginfo.h"
-
 #include <cglm/cglm.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "log/log.h"
+#include "log/proginfo.h"
 
 
 unsigned int cav_vao, cav_vbo, cav_frag, cav_vertex, cav_shader_program;
