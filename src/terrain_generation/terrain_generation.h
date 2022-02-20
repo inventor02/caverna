@@ -63,6 +63,6 @@ void prng_set_seed();
  *
  * @return a random double between the given bounds
  */
-double generate_random_double(double min, double max);
+uint32_t generate_random_integer(uint32_t min, uint32_t max);
 
 #endif // TERRAIN_GENERATION_H
