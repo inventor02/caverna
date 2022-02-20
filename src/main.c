@@ -8,7 +8,6 @@
 #include "log/log.h"
 #include "log/proginfo.h"
 #include "render/render_master.h"
-#include "terrain_generation/terrain_generation.h"
 
 
 int main() {
@@ -16,8 +15,6 @@ int main() {
   preamble();
 
 
-  struct room thisRoom = room_init(1);
-  generate_level(&thisRoom);
 
 	run();
 
