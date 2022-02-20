@@ -29,33 +29,24 @@ enum tile_type {
 struct room {
   enum tile_type tile_layout[CAVERNA_LEVEL_MAX_X_DIMENSION][CAVERNA_LEVEL_MAX_Y_DIMENSION][CAVERNA_LEVEL_MAX_Z_DIMENSION];
   uint8_t level;
-  uint8_t min_x;
-  uint8_t min_y;
-  uint8_t min_z;
-  uint8_t max_x;
-  uint8_t max_y;
-  uint8_t max_z;
+  uint8_t x;
+  uint8_t y;
+  uint8_t z;
 };
 
 /**
  * @brief Initialises the room.
  *
  * @param level is the level in the cave that the current room is
- * @param min_x is the minimum x dimension of the room
- * @param min_y is the minimum y dimension of the room
- * @param min_z is the minimum z dimension of the room
- * @param max_x is the maximum x dimension of the room
- * @param max_y is the maximum y dimension of the room
- * @param max_z is the maximum z dimension of the room
+ * @param x is the x dimension of the room
+ * @param y is the y dimension of the room
+ * @param z is the z dimension of the room
  */
 struct room room_init(
     uint8_t level,
-    uint8_t min_x,
-    uint8_t min_y,
-    uint8_t min_z,
-    uint8_t max_x,
-    uint8_t max_y,
-    uint8_t max_z
+    uint8_t x,
+    uint8_t y,
+    uint8_t z
     );
 
 /**
