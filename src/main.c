@@ -17,12 +17,9 @@ int main() {
   preamble();
 
 	//run();
-  struct room room = room_init(1);
-  generate_level(&room);
-  prng_set_seed();
-  for(uint64_t i = 0; i < 100000; i++){
-    generate_random_integer(0, 1000);
-  }
+  struct room room1 = room_init(1, 1, 1, 1, 2, 2, 2);
+  struct room room2 = room_init(1, 2, 2, 2, 1, 1, 1);
+  struct room room3 = room_init(1, 1, 1, 1, 999, 999, 999);
 
 
   /*

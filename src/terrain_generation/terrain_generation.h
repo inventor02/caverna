@@ -12,9 +12,9 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define CAVERNA_LEVEL_X_DIMENSION 16
-#define CAVERNA_LEVEL_Y_DIMENSION 16
-#define CAVERNA_LEVEL_Z_DIMENSION 16
+#define CAVERNA_LEVEL_MAX_X_DIMENSION 16
+#define CAVERNA_LEVEL_MAX_Y_DIMENSION 16
+#define CAVERNA_LEVEL_MAX_Z_DIMENSION 16
 
 // This can be expanded to allow for the creation of different tiles.
 enum tile_type {
@@ -27,16 +27,36 @@ enum tile_type {
  * @brief A struct to hold all the data regarding the rogue-like levels.
  */
 struct room {
-  enum tile_type tile_layout[CAVERNA_LEVEL_X_DIMENSION][CAVERNA_LEVEL_Y_DIMENSION][CAVERNA_LEVEL_Z_DIMENSION];
+  enum tile_type tile_layout[CAVERNA_LEVEL_MAX_X_DIMENSION][CAVERNA_LEVEL_MAX_Y_DIMENSION][CAVERNA_LEVEL_MAX_Z_DIMENSION];
   uint8_t level;
+  uint8_t min_x;
+  uint8_t min_y;
+  uint8_t min_z;
+  uint8_t max_x;
+  uint8_t max_y;
+  uint8_t max_z;
 };
 
 /**
  * @brief Initialises the room.
  *
  * @param level is the level in the cave that the current room is
+ * @param min_x is the minimum x dimension of the room
+ * @param min_y is the minimum y dimension of the room
+ * @param min_z is the minimum z dimension of the room
+ * @param max_x is the maximum x dimension of the room
+ * @param max_y is the maximum y dimension of the room
+ * @param max_z is the maximum z dimension of the room
  */
-struct room room_init(uint8_t level);
+struct room room_init(
+    uint8_t level,
+    uint8_t min_x,
+    uint8_t min_y,
+    uint8_t min_z,
+    uint8_t max_x,
+    uint8_t max_y,
+    uint8_t max_z
+    );
 
 /**
  * @brief The main method to generate the level and write it to the room struct.
