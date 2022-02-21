@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "log/log.h"
+#include "../log/log.h"
 
 struct room room_init (uint8_t level, uint8_t x, uint8_t y, uint8_t z) {
 
@@ -39,9 +39,9 @@ void generate_level(struct room *room) {
     clog(CAVERNA_LOG_LEVEL_ERROR, "Invalid room passed as parameter");
     return;
   }
-  for(uint8_t x = 1; x < (room->x)-1; x++) {
-    for(uint8_t y = 1; y < (room->y)-1; y++) {
-      for(uint8_t z = 1; z < (room->z)-1; z++) {
+  for (uint8_t x = 1; x < (room->x) - 1; x++) {
+    for (uint8_t y = 1; y < (room->y) - 1; y++) {
+      for (uint8_t z = 1; z < (room->z) - 1; z++) {
         room->tile_layout[x][y][z] = PATH;
       }
     }
