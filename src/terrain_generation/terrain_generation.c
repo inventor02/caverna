@@ -8,12 +8,7 @@
 
 #include "log/log.h"
 
-struct room room_init (
-    uint8_t level,
-    uint8_t x,
-    uint8_t y,
-    uint8_t z
-    ) {
+struct room room_init (uint8_t level, uint8_t x, uint8_t y, uint8_t z) {
 
   struct room room = {
     .tile_layout = {{{WALL}}},
@@ -22,18 +17,11 @@ struct room room_init (
     .y = '\0',
     .z = '\0',
   };
-  if(
-      x < 3 ||
-      y < 3 ||
-      z < 3
-      ){
+
+  if (x < 3 || y < 3 || z < 3) {
     clog(CAVERNA_LOG_LEVEL_ERROR, "Room too small, room initialisation failed");
   }
-  else if (
-      x > CAVERNA_LEVEL_MAX_X_DIMENSION ||
-      y > CAVERNA_LEVEL_MAX_Y_DIMENSION ||
-      z > CAVERNA_LEVEL_MAX_Z_DIMENSION
-      ) {
+  else if (x > CAVERNA_LEVEL_MAX_X_DIMENSION || y > CAVERNA_LEVEL_MAX_Y_DIMENSION || z > CAVERNA_LEVEL_MAX_Z_DIMENSION) {
     clog(CAVERNA_LOG_LEVEL_ERROR, "Room larger than maximum size, room initialisation failed");
   }
   else {
