@@ -18,11 +18,7 @@ int main() {
 
 	//run();
   struct room room1 = room_init(1, 5, 5, 5);
-  struct room room2 = room_init(1, 999, 999, 999);
-  struct room room3 = room_init(1, 1, 1, 1);
   generate_level(&room1);
-  generate_level(&room2);
-  generate_level(&room3);
 
 
   /*
