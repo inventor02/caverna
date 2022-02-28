@@ -5,8 +5,8 @@
 
 #include <cglm/cglm.h>
 
-#include "log/log.h"
-#include "log/proginfo.h"
+#include "util/log/log.h"
+#include "util/log/proginfo.h"
 #include "render/render_master.h"
 
 
