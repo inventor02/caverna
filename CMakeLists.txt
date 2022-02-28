@@ -48,6 +48,9 @@ target_link_libraries(${CAVERNA_EXEC_NAME} ${CAVERNA_LIBS})
 # Inlcude cglm
 add_subdirectory(external/cglm/)
 
+# Copy resource folder into build directory
+add_custom_command(TARGET ${CAVERNA_EXEC_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/res $<TARGET_FILE_DIR:${CAVERNA_EXEC_NAME}>/res)
+
 # Compiler and linker options
 set(CAVERNA_FLAGS "-lGL -lGLU -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -g -Wall -Werror -pg")
 target_compile_options(${CAVERNA_EXEC_NAME} PUBLIC ${CAVERNA_FLAGS})
