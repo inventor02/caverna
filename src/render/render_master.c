@@ -8,9 +8,9 @@
 
 #include "log/log.h"
 #include "log/proginfo.h"
+#include "shader/shader_source.h"
 
-
-unsigned int cav_vao, cav_vbo, cav_frag, cav_vertex, cav_shader_program;
+unsigned int cav_vao, cav_vbo, cav_ebo, cav_frag, cav_vertex, cav_shader_program;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
@@ -33,8 +33,10 @@ int run() {
 		clogf(CAVERNA_LOG_LEVEL_TRACE, "Element %i : Value %f\n", i, vertices[i]);
 	}
 
-	const char *vertexShaderSource = "#version 330 core\nlayout (location = 0) in vec3 aPos;\nvoid main()\n{\n   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n}\0";
-	const char *fragmentShaderSource = "#version 330 core\nout vec4 FragColor;\nvoid main()\n{\n   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n}\0";
+	char *vertexShaderSource = load_shader_source("example.vert");
+	char *fragmentShaderSource = load_shader_source("example.frag");
+
+	printf("VERT pointer: %i, FRAG pointer: %i\n", vertexShaderSource, fragmentShaderSource);
 
 
 	clogf(CAVERNA_LOG_LEVEL_TRACE, "Number of elements the array can hold: %i", sizeof(vertices)/sizeof(float));
@@ -73,11 +75,12 @@ int run() {
 
 	// END OF INIT FUNCTION
 
-	// Simple code to test cglm functionality
+	// Simple code to test cglm functionality //
 	//
 	mat4 m = GLM_MAT4_IDENTITY_INIT;
 
 	glm_mat4_mul(m, m, m);
+	////////////////////////////////////////////
 
 	// NEED TO SPLIT THIS UP
 	vboBufferDataExample(vertices, 9, vertexShaderSource, fragmentShaderSource);
