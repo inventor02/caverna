@@ -48,17 +48,3 @@ void generate_level(struct room *room) {
   }
   clog(CAVERNA_LOG_LEVEL_TRACE, "Level successfully generated");
 }
-
-
-void prng_set_seed() {
-  uint64_t prng_seed = time(0);
-  srand(prng_seed);
-  clogf(CAVERNA_LOG_LEVEL_TRACE, "PRNG/Room Seed: %d", prng_seed);
-}
-
-uint32_t generate_random_integer(uint32_t min, uint32_t max) {
-  assert(prng_seed != '\0');
-  uint32_t random_number = (rand() % (max - min + 1)) + min;
-  clogf(CAVERNA_LOG_LEVEL_TRACE, "Random double: %d", random_number);
-  return random_number;
-}

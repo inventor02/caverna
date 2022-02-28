@@ -10,7 +10,7 @@
 #include "log/proginfo.h"
 #include "render/render_master.h"
 #include "terrain_generation/terrain_generation.h"
-
+#include "utils/random_number_generation.h"
 
 int main() {
   logging_init(5);
@@ -19,6 +19,10 @@ int main() {
 	//run();
   struct room room1 = room_init(1, 5, 5, 5);
   generate_level(&room1);
+
+  prng_set_seed();
+  generate_random_integer(0, 10);
+  generate_random_double();
 
 
   /*

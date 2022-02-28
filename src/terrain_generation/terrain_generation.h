@@ -54,26 +54,4 @@ struct room room_init(
  */
 void generate_level(struct room *room);
 
-/**
- * @brief The seed for the PRNG. This should only be allocated once.
- */
-extern uint64_t prng_seed;
-
-
-/**
- * @brief A method to set the seed for the PRNG. This is to ensure the
- * seed is set only once.
- */
-void prng_set_seed();
-
-/**
- * @brief A method to generate a random number between a given range.
- *
- * @param min is the lower bound of the range
- * @param max is the upper bound of the range
- *
- * @return a random double between the given bounds
- */
-uint32_t generate_random_integer(uint32_t min, uint32_t max);
-
 #endif // TERRAIN_GENERATION_H
