@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "log/log.h"
-#include "log/proginfo.h"
+#include "util/log/log.h"
+#include "util/log/proginfo.h"
 
 int run();
 
