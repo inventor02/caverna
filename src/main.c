@@ -15,6 +15,15 @@
 int main() {
   logging_init(5);
   preamble();
+
+  struct room room;
+
+  clogf(CAVERNA_LOG_LEVEL_ERROR, "Sizeof(room struct) bytes before = %d", sizeof(room));
+
+  room = room_init(1, 10, 10, 10);
+
+  clogf(CAVERNA_LOG_LEVEL_ERROR, "Sizeof(room struct) bytes after = %d", sizeof(room));
+
 	run();
 
   return 0;

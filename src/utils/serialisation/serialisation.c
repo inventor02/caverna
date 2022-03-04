@@ -5,3 +5,5 @@
 
 #include "../log/log.h"
 
+
+uint8_t* serialise(struct{}*){}
