@@ -1,9 +1,9 @@
 #include "resource_loader.h"
 
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <limits.h>
 
 #if defined(_WINDOWS) || defined(_WIN32) || defined(_WIN64)
 	// If a windows machine, use the direct library to get the cwd method
