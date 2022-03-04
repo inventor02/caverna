@@ -9,13 +9,13 @@
 #ifndef RESOURCE_LOADER_H
 #define RESOURCE_LOADER_H
 
-#define SHADER_SOURCE_MAX_LENGTH 1024
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "util/log/log.h"
+
+#define SHADER_SOURCE_MAX_LENGTH 1024
 
 /**
  * @brief Loads the shader source found at the path provided.
