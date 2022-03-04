@@ -1,24 +1,23 @@
 #include "resource_loader.h"
 
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-//TODO: REMOVE THIS IN THE FUTURE, ONLY FOR TESTING
-//TODO: REPLACE ALL MALLOC WITH CALLOC
-#include <limits.h>
-
-
 #if defined(_WINDOWS) || defined(_WIN32) || defined(_WIN64)
-#include <direct.h>
-#define GetCurrentDirectory _getcwd
+	// If a windows machine, use the direct library to get the cwd method
+	#include <direct.h>
+	#define GetCurrentDirectory _getcwd
 #else
-#include <unistd.h>
-#define GetCurrentDirectory getcwd
+	// If on a UNIX based machine, use the unistd library to get the cwd method
+	#include <unistd.h>
+	#define GetCurrentDirectory getcwd
 #endif
 
-
 #include "util/log/log.h"
+
+//TODO: REPLACE ALL MALLOC WITH CALLOC
 
 char* load_shader_source(char *shader_path) {
   // Create a file pointer

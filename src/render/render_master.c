@@ -29,21 +29,14 @@ int run() {
 	//////////////// Garbage example data delete later ////////////////////////
 	float vertices[] = {-0.5f, -0.5f, 0.0f, 0.5f, -0.5f, 0.0f, 0.0f, 0.5f, 0.0f};
 
-	for (int i = 0; i < 9; i++) {
-		clogf(CAVERNA_LOG_LEVEL_TRACE, "Element %i : Value %f\n", i, vertices[i]);
-	}
 
 	char *vertexShaderSource = load_shader_source("example.vert");
 	char *fragmentShaderSource = load_shader_source("example.frag");
 
-	printf("VERT pointer: %i, FRAG pointer: %i\n", vertexShaderSource, fragmentShaderSource);
 
 
-	clogf(CAVERNA_LOG_LEVEL_TRACE, "Number of elements the array can hold: %i", sizeof(vertices)/sizeof(float));
 
 	printSize(vertices);
-
-
 
 
 	////////////////////////////////////////////////////////////////////////////
