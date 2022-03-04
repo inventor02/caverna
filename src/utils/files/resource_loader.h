@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "util/log/log.h"
+#include "utils/log/log.h"
 
 #define SHADER_SOURCE_MAX_LENGTH 1024
 

@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "../log/log.h"
+#include "utils/log/log.h"
 
 struct room room_init (uint8_t level, uint8_t x, uint8_t y, uint8_t z) {
 

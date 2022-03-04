@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "util/log/log.h"
-#include "util/log/proginfo.h"
-#include "util/files/resource_loader.h"
+#include "utils/log/log.h"
+#include "utils/log/proginfo.h"
+#include "utils/files/resource_loader.h"
 
 unsigned int cav_vao, cav_vbo, cav_ebo, cav_frag, cav_vertex, cav_shader_program;
 

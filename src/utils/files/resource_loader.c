@@ -15,7 +15,7 @@
 	#define GetCurrentDirectory getcwd
 #endif
 
-#include "util/log/log.h"
+#include "utils/log/log.h"
 
 //TODO: REPLACE ALL MALLOC WITH CALLOC
 

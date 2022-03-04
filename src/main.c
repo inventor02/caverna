@@ -6,11 +6,11 @@
 
 #include <cglm/cglm.h>
 
-#include "util/log/log.h"
-#include "util/log/proginfo.h"
+#include "utils/log/log.h"
+#include "utils/log/proginfo.h"
 #include "render/render_master.h"
 #include "terrain_generation/terrain_generation.h"
-#include "utils/random_number_generation.h"
+#include "utils/numbers/random_number_generation.h"
 
 int main() {
   logging_init(5);
