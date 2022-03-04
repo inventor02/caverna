@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "../log/log.h"
+#include "util/log/log.h"
 
 static void vector_resize(struct vector *vect) {
   // TODO implement
