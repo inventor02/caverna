@@ -11,6 +11,7 @@
 #include "render/render_master.h"
 #include "terrain_generation/terrain_generation.h"
 #include "utils/numbers/random_number_generation.h"
+#include "utils/serialisation/serialisation.h"
 
 int main() {
   logging_init(5);
@@ -18,13 +19,13 @@ int main() {
 
   struct room room;
 
-  clogf(CAVERNA_LOG_LEVEL_ERROR, "Sizeof(room struct) bytes before = %d", sizeof(room));
-
   room = room_init(1, 10, 10, 10);
 
-  clogf(CAVERNA_LOG_LEVEL_ERROR, "Sizeof(room struct) bytes after = %d", sizeof(room));
+	//run();
 
-	run();
+  uint8_t* bitstream = serialise_int(5);
+
+  printf("Output from serialise_int: %d\n", bitstream);
 
   return 0;
 }
